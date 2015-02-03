@@ -8,7 +8,7 @@ package lab03;
 public interface Bag<T> {
     
     /** Returns the  current number of items in the bag */
-    public T getCurrentSize();
+    public int getCurrentSize();
     
     /** Tells whether or not the bag is empty */
     public boolean isEmpty();

@@ -1,5 +1,7 @@
 package lab03;
 
+import java.util.Random;
+
 /**
  *
  * @author jaden.young
@@ -49,9 +51,11 @@ public class ArrayBag<T> implements Bag<T> {
     }
 
     /**
-     * 
-     * @param item
-     * @return 
+     * Adds an item to the end of the bag.<BR>
+     * If the bag is full, the length is doubled, and the item is then added.
+     * Returns true if the addition was successful, false if not
+     * @param item Item to be added
+     * @return True if the item was added successfully, false if not
      */
     @Override
     public boolean add(T item) {
@@ -66,16 +70,41 @@ public class ArrayBag<T> implements Bag<T> {
         }
         bag[count] = item;
         count++;
+        return bag[count - 1] == item;
     }
 
+    /**
+     * Removes a random item from the bag.<BR>
+     * Returns the removed item
+     * @return item removed from the bag
+     */
     @Override
     public T remove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Random rand = new Random();
+        int index = rand.nextInt(count);
+        T removed = bag[index];
+        for(int i = index; i < count; i++) {
+            bag[i] = bag[i + 1];
+        }
+        count--;
+        return removed;
     }
 
+    
     @Override
     public boolean remove(T item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean foundMatch = false;
+        int curIndex = 0;
+        while(curIndex < count && !foundMatch) {
+            if(bag[curIndex].equals(item)) {
+                for(int i = curIndex; i < count; i++) {
+                    bag[i] = bag[i + 1];
+                }
+                count--;
+                return true;
+            }
+            
+        }
     }
 
     @Override
