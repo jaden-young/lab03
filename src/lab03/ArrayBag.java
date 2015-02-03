@@ -9,12 +9,30 @@ public class ArrayBag<T> implements Bag<T> {
     private T[] bag;
     private int count;
     
+    /**
+     * Default constructor<BR>
+     * Creates an array of generic type with length 50
+     */
     public ArrayBag() {
-        bag = 
+        Object[] temp = new Object[50];
+        bag = (T[])temp;
+        temp = null;
     }
+    
+    /**
+     * Overloaded constructor<BR>
+     * Creates an array of generic type with specified length
+     * @param size Length of the array
+     */
+    public ArrayBag(int size) {
+        Object[] temp = new Object[size];
+        bag = (T[])temp;
+        temp = null;
+    }
+
     @Override
     public T getCurrentSize() {
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -56,7 +74,4 @@ public class ArrayBag<T> implements Bag<T> {
     public boolean contains(T item) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
 }

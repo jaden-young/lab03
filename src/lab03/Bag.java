@@ -1,7 +1,8 @@
 package lab03;
 
 /**
- *
+ * 
+ * @param T Datatype of the bag
  * @author jaden.young
  */
 public interface Bag<T> {
