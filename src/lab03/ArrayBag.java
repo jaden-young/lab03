@@ -30,24 +30,42 @@ public class ArrayBag<T> implements Bag<T> {
         temp = null;
     }
 
+    /** Returns the number of items in the bag */
     @Override
-    public T getCurrentSize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getCurrentSize() {
+        return count;
     }
 
+    /** Returns true if the bag is empty, false if not */
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return count == 0;
     }
 
+    /** Returns true if the bag is full, false if not */
     @Override
     public boolean isFull() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return count == bag.length;
     }
 
+    /**
+     * 
+     * @param item
+     * @return 
+     */
     @Override
     public boolean add(T item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean success = false;
+        if(count == bag.length) {
+            Object[] temp = new Object[2 * bag.length];
+            for(int i = 0; i < count; i++) {
+                temp[i] = bag[i];
+            }
+            bag = (T[])temp;
+            temp = null;
+        }
+        bag[count] = item;
+        count++;
     }
 
     @Override
