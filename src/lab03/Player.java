@@ -1,15 +1,15 @@
 package lab03;
 
 /**
- * Defines a Player object with values for name, position, and number.
+ * Defines a Player object with values for name, positionPlayed, and number.
  * @author Jaden Young
  */
 public class Player {
     
     //instance variables
     private String name;
-    private String position;
-    private int number;
+    private String positionPlayed;
+    private int jerseyNumber;
     
     /**
      * Constructs a new Player object with values for all of the fields
@@ -20,8 +20,8 @@ public class Player {
     public Player(String xName, String xPosition, int xNumber){
         
         name = xName;
-        position = xPosition;
-        this.setNumber(xNumber);
+        positionPlayed = xPosition;
+        this.setJerseyNumber(xNumber);
     }
     
     //accessor methods---------------------------------
@@ -37,16 +37,16 @@ public class Player {
      * Returns the position of the player
      * @return Position of the player
      */
-    public String getPosition() {
-        return position;
+    public String getPositionPlayed() {
+        return positionPlayed;
     }
     
     /**
      * Returns the number of the player
      * @return Player's number
      */
-    public int getNumber() {
-        return number;
+    public int getJerseyNumber() {
+        return jerseyNumber;
     }
     
     
@@ -63,8 +63,8 @@ public class Player {
      * Sets the position of the player
      * @param xPosition New position for the player
      */
-    public void setPosition(String xPosition) {
-        position = xPosition;
+    public void setPositionPlayed(String xPosition) {
+        positionPlayed = xPosition;
     }
     
     /**
@@ -72,11 +72,30 @@ public class Player {
      * Number must be an integer 1-99, else throws exception
      * @param xNumber 
      */
-    public final void setNumber(int xNumber) {
+    public final void setJerseyNumber(int xNumber) {
         if (xNumber > 0 && xNumber < 100)
-            number = xNumber;
+            jerseyNumber = xNumber;
         else
             throw new IllegalArgumentException("Number must be a "
                     + "whole number 1-99");
+    }
+    
+    
+    /**
+     * Checks the contents of two Player objects for equality.<BR>
+     * Returns true if objects contents are equal, false if not
+     * @param xObj Object to be compared
+     * @return True if objects are equal, false if not
+     */
+    @Override
+    public boolean equals(Object xObj) {
+        if(!(xObj instanceof Player))
+            return false;
+        Player obj = (Player)xObj;
+        if(!(name.equals(obj.getName())))
+            return false;
+        if(!(positionPlayed.equals(obj.getPositionPlayed())))
+            return false;
+        return jerseyNumber == obj.getJerseyNumber();
     }
 }
