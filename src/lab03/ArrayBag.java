@@ -19,6 +19,7 @@ public class ArrayBag<T> implements Bag<T> {
         Object[] temp = new Object[50];
         bag = (T[])temp;
         temp = null;
+        count = 0;
     }
     
     /**
@@ -30,6 +31,7 @@ public class ArrayBag<T> implements Bag<T> {
         Object[] temp = new Object[size];
         bag = (T[])temp;
         temp = null;
+        count = 0;
     }
 
     /** Returns the number of items in the bag */
@@ -90,35 +92,96 @@ public class ArrayBag<T> implements Bag<T> {
         return removed;
     }
 
-    
+    /**
+     * Removes a specified item from the bag.<BR>
+     * All following elements are shifted 1 to the left to fill the hole.<BR>
+     * Returns true if item was removed successfully, false if not.
+     * @param item Item to be removed
+     * @return True if removal was successful, false if removal failed/item was
+     *          not found
+     */
     @Override
     public boolean remove(T item) {
-        boolean foundMatch = false;
-        int curIndex = 0;
-        while(curIndex < count && !foundMatch) {
-            if(bag[curIndex].equals(item)) {
-                for(int i = curIndex; i < count; i++) {
-                    bag[i] = bag[i + 1];
+        for(int i = 0; i < count; i++) {
+            if(bag[i].equals(item)) {
+                for(int j = i; j < count; j++) {
+                    bag[j] = bag[j + 1];
                 }
                 count--;
                 return true;
             }
-            
         }
+        return false;
     }
 
+    /**
+     * Removes all entries from the bag.<BR>
+     * The method works by simply assigning the reference to a new bag,
+     * resetting the length to 50. 
+     */
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object[] temp = new Object[50];
+        bag = (T[])temp;
+        temp = null;
+        count = 0;
     }
 
+    /**
+     * Returns the number of times a specified item appears in the bag
+     * @param item Item to be searched for
+     * @return Number of times the item appears in the bag
+     */
     @Override
     public int getFrequencyOf(T item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int freq = 0;
+        for(int i = 0; i < count; i++) {
+            if(bag[i].equals(item))
+                freq++;
+        }
+        return freq;
     }
 
+    /**
+     * Tells whether or not a specified item is in the bag
+     * @param item Item to search for
+     * @return True if item is found, false if not 
+     */
     @Override
     public boolean contains(T item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(int i = 0; i < count; i++) {
+            if(bag[i].equals(item))
+                return true;
+        }
+        return false;
     }
+    
+    /**
+     * Returns the item stored at the specified index position
+     * @param index Index of the item that will be returned
+     * @return item stored at the specified index
+     */
+    public T getItem(int index) throws ArrayIndexOutOfBoundsException {
+        if(index < 0 || index > count)
+            throw new ArrayIndexOutOfBoundsException("There is nothing stored"
+                    + " at that index.");
+        return bag[index];
+    }
+    
+    /**
+     * Returns the current capacity of the bag (not the number of items stored)
+     * @return bag capacity
+     */
+    public int getSize() {
+        return bag.length;
+    }
+    
+    /**
+     * Returns a copy of the bag array instance variable
+     * @return The reference to the whole array totally violating encapsulation
+     */
+    public T[] getCopy() {
+        return bag;
+    }
+    
 }
