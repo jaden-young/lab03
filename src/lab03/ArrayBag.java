@@ -177,11 +177,17 @@ public class ArrayBag<T> implements Bag<T> {
     }
     
     /**
-     * Returns a copy of the bag array instance variable
-     * @return The reference to the whole array totally violating encapsulation
+     * Returns a copy of the bag
+     * @return A reference to a copy of the bag
      */
     public T[] getCopy() {
-        return bag;
+        Object[] tempObj = new Object[bag.length];
+        for(int i = 0; i < count; i++) {
+            tempObj[i] = bag[i];
+        }
+        T[] tempT = (T[])tempObj;
+        tempObj = null;
+        return tempT;
     }
     
 }
