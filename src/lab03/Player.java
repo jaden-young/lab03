@@ -72,7 +72,7 @@ public class Player {
      * Number must be an integer 1-99, else throws exception
      * @param xNumber 
      */
-    public final void setJerseyNumber(int xNumber) {
+    public void setJerseyNumber(int xNumber) {
         if (xNumber >= 0 && xNumber < 100)
             jerseyNumber = xNumber;
         else
