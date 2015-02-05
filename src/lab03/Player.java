@@ -98,4 +98,17 @@ public class Player {
             return false;
         return jerseyNumber == obj.getJerseyNumber();
     }
+    
+    /**
+     * Returns a string representation of the data contained in the object
+     * @return Single printable string of data stored in the object
+     */
+    @Override
+    public String toString() {
+        String output = "";
+        output += "Name: " + this.name;
+        output += "\nPosition: " + this.positionPlayed;
+        output += "\nJersey Number: " + this.jerseyNumber;
+        return output;
+    }
 }

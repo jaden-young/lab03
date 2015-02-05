@@ -163,8 +163,9 @@ public class ArrayBag<T> implements Bag<T> {
      */
     public T getItem(int index) throws ArrayIndexOutOfBoundsException {
         if(index < 0 || index > count)
-            throw new ArrayIndexOutOfBoundsException("There is nothing stored"
-                    + " at that index.");
+            throw new ArrayIndexOutOfBoundsException("ERROR: There was a "
+                    + "problem retrieving the data. Specified index position "
+                    + "is empty.");
         return bag[index];
     }
     
@@ -190,4 +191,18 @@ public class ArrayBag<T> implements Bag<T> {
         return tempT;
     }
     
+    /**
+     * toString method that returns a string comprised of a combination of 
+     * the toString methods for each element in the bag.
+     * @return Concatenated String with the output of the toString method from
+     *          every element in the bag
+     */
+    @Override
+    public String toString() {
+        String output = "";
+        for(int i = 0; i < this.getCurrentSize(); i++) {
+            output += "\n" + bag[i].toString();
+        }
+        return output;
+    }
 }
