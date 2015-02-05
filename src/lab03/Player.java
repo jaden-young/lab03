@@ -73,7 +73,7 @@ public class Player {
      * @param xNumber 
      */
     public final void setJerseyNumber(int xNumber) {
-        if (xNumber > 0 && xNumber < 100)
+        if (xNumber >= 0 && xNumber < 100)
             jerseyNumber = xNumber;
         else
             throw new IllegalArgumentException("Number must be a "

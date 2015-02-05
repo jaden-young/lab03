@@ -10,20 +10,27 @@ public class NDSUBasketBall {
         Scanner scan = new Scanner(System.in);
         ArrayBag team = new ArrayBag();
         final int NUM_PLAYERS = 14; //magic numbers are icky
+        
+        System.out.println("--------- NDSU Basketball Team ---------");
         for(int i = 0; i < NUM_PLAYERS; i++) {
+            System.out.println("Player " + i + ":");
             // get name
             System.out.print("Name > ");
-            String name = scan.next();
+            String name = scan.nextLine();
             // get position
             System.out.print("Position > ");
-            String position = scan.next();
+            String position = scan.nextLine();
             // get number
-            do {
+            System.out.print("Jersey number > ");
+            while(!scan.hasNextInt()) {
+                String garbage = scan.nextLine();
                 System.out.print("Jersey number > ");
-            } while(!scan.hasNextInt());
+            }
             int number = scan.nextInt();
             // add player to team
             team.add(new Player(name, position, number));
+            
+            scan.nextLine();
         }
         //remove a random player from the team
         team.remove();
