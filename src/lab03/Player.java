@@ -74,11 +74,11 @@ public class Player {
      * @param xNumber 
      */
     public void setJerseyNumber(int xNumber) {
-        if (xNumber >= 0 && xNumber < 100)
-            jerseyNumber = xNumber;
-        else
+        if (xNumber < 0 || xNumber > 99)
             throw new IllegalArgumentException("Number must be a "
                     + "whole number 1-99");
+        else
+            jerseyNumber = xNumber;
     }
     
     
