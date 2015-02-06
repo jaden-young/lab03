@@ -29,7 +29,7 @@ public class NDSUBasketBall {
             int number = scan.nextInt();
             // add player to team
             team.add(new Player(name, position, number));
-            
+            //eats extra character left behind
             scan.nextLine();
         }
         //remove a random player from the team
