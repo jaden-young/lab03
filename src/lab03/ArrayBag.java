@@ -3,8 +3,8 @@ package lab03;
 import java.util.Random;
 
 /**
- *
- * @author jaden.young
+ * Uses an array as a data structure for a generic bag. 
+ * @author Jaden Young
  */
 public class ArrayBag<T> implements Bag<T> {
 

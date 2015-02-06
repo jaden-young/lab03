@@ -1,7 +1,8 @@
 package lab03;
 
 /**
- * Defines a Player object with values for name, positionPlayed, and number.
+ * Defines a Player object with values for name, the position they play, and
+ * their jersey number.
  * @author Jaden Young
  */
 public class Player {

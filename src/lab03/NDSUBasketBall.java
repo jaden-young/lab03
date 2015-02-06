@@ -1,8 +1,8 @@
 package lab03;
 import java.util.Scanner;
 /**
- *
- * @author jaden
+ * Demonstrates the ArrayBag class.
+ * @author Jaden Young
  */
 public class NDSUBasketBall {
     public static void main(String[] args) {

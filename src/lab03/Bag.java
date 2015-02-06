@@ -1,9 +1,11 @@
 package lab03;
 
 /**
- * 
+ * Generic interface that defines methods for use with a bag. The bag can hold
+ * any data types, does not order the items and does not guard against 
+ * duplicate entries.
  * @param T Datatype of the bag
- * @author jaden.young
+ * @author Jaden Young
  */
 public interface Bag<T> {
     
